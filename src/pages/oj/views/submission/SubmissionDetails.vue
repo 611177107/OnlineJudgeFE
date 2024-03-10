@@ -25,6 +25,10 @@
     <Col :span="20">
       <Highlight :code="submission.code" :language="submission.language" :border-color="status.color"></Highlight>
     </Col>
+    <!-- 611177107: My Add -->
+    <Col :span="20">
+      <Highlight :gpt_message="submission.gpt_message" :border-color="status.color"></Highlight>
+    </Col>
     <Col v-if="submission.can_unshare" :span="20">
       <div id="share-btn">
         <Button v-if="submission.shared"
@@ -89,6 +93,7 @@
         submission: {
           result: '0',
           code: '',
+          gpt_message: '',
           info: {
             data: []
           },

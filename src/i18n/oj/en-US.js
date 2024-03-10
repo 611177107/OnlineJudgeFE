@@ -165,7 +165,7 @@ export const m = {
   // announcements.vue
   Refresh: 'Refresh',
   Back: 'Back',
-  No_Announcements: 'No Announcements',
+  No_Announcements: 'Test Test Test No Announcements',
   // Setting.vue
   Profile: 'Profile',
   Account: 'Account',
