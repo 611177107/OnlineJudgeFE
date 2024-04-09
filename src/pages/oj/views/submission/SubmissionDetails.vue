@@ -27,7 +27,7 @@
     </Col>
     <!-- 611177107: My Add -->
     <Col :span="20">
-      <Highlight :gpt_message="submission.gpt_message" :border-color="status.color"></Highlight>
+      <Highlight :code="gpt_message" :border-color="status.color"></Highlight>
     </Col>
     <Col v-if="submission.can_unshare" :span="20">
       <div id="share-btn">
@@ -103,11 +103,13 @@
           }
         },
         isConcat: false,
-        loading: false
+        loading: false,
+        gpt_message: ''
       }
     },
     mounted () {
       this.getSubmission()
+      this.testGPTAPI()
     },
     methods: {
       getSubmission () {
@@ -157,6 +159,29 @@
           this.getSubmission()
           this.$success(this.$i18n.t('m.Succeeded'))
         }, () => {
+        })
+      },
+      // async testGPTAPI () {
+      //   console.log('==================tesGPTAPI')
+      //   let data = {id: this.submission.id}
+      //   try {
+      //     this.gpt_message = await api.testGPT(data).data
+      //     console.log(this.gpt_message)
+      //   } catch (error) {
+      //     console.error('Failed to get message from OpenAI:', error)
+      //   }
+      // }
+      testGPTAPI () {
+        console.log('==================tesGPTAPI')
+        let data = {id: this.submission.id}
+        this.loading = true
+        api.testGPT(data).then(res => {
+          this.loading = false
+          this.gpt_message = res.data.data
+          console.log('===============gpt_message')
+          console.log(this.gpt_message)
+        }, () => {
+          this.loading = false
         })
       }
     },

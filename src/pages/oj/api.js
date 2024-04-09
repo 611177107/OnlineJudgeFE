@@ -205,7 +205,6 @@ export default {
     })
   },
   async testOpenAI () {
-    const apiKey = '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'
     // const client = axios.create({
     //   headers: {
     //     Authorization: 'Bearer ' + apiKey
@@ -326,8 +325,10 @@ export default {
       data
     })
   },
-  testGPT () {
-    return ajax('submission', 'testGPT', {})
+  testGPT (data) {
+    return ajax('submisstion_gpt', 'post', {
+      data
+    })
   }
 }
 
