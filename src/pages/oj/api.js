@@ -204,62 +204,24 @@ export default {
       data
     })
   },
-  async testOpenAI () {
-    // const client = axios.create({
-    //   headers: {
-    //     Authorization: 'Bearer ' + apiKey
-    //   }
-    // })
-    // console.log('========axios')
-    // console.log(client)
-    // const GPTparams = {
-    //   prompt: 'price = int(input()) number = input() if price < 100:print(price) elif 100<= price < 500: if number == (SAVE20"):print(price * 0.8) elif number == ("SAVE30"):print(price * 0.7)else:print(price) elif price>=500:if number == ("BIGSALE"):print(price * 0.6) else:print(price * 0.8)',
-    //   model: 'gpt-3.5-turbo',
-    //   max_tokens: 300
-    // }
-    // client
-    //   .post('https://api.openai.com/v1/chat/completions', GPTparams)
-    //   .then((result) => {
-    //     console.log('========openai api success')
-    //     const resultData = result.data.choices[0].text
-    //     console.log(resultData)
-    //     return resultData
-    //   })
-    //   .catch((err) => {
-    //     return err
-    //   })
-    // return ajax('https://api.openai.com/v1/moderations', 'get', {
-    //   input: 'price = int(input()) number = input() if price < 100:print(price) elif 100<= price < 500: if number == (SAVE20"):print(price * 0.8) elif number == ("SAVE30"):print(price * 0.7)else:print(price) elif price>=500:if number == ("BIGSALE"):print(price * 0.6) else:print(price * 0.8)'
-    // })
-    // return ajax('https://api.openai.com/v1/chat/completions', 'post', {
-    //   input: 'price = int(input()) number = input() if price < 100:print(price) elif 100<= price < 500: if number == (SAVE20"):print(price * 0.8) elif number == ("SAVE30"):print(price * 0.7)else:print(price) elif price>=500:if number == ("BIGSALE"):print(price * 0.6) else:print(price * 0.8)'
-    // })
-    const promptData = {
-      model: 'gpt-3.5-turbo', // 请根据需要替换为您想要使用的模型
-      // prompt: 'price = int(input()) number = input() if price < 100:print(price) elif 100<= price < 500: if number == (SAVE20"):print(price * 0.8) elif number == ("SAVE30"):print(price * 0.7)else:print(price) elif price>=500:if number == ("BIGSALE"):print(price * 0.6) else:print(price * 0.8)', // 您的提示文本
-      messages: [{'role': 'user', 'content': 'price = int(input()) number = input() if price < 100:print(price) elif 100<= price < 500: if number == (SAVE20"):print(price * 0.8) elif number == ("SAVE30"):print(price * 0.7)else:print(price) elif price>=500:if number == ("BIGSALE"):print(price * 0.6) else:print(price * 0.8)'}],
-      max_tokens: 300
-    }
+  // async testOpenAI () {
+  //   const promptData = {
+  //     model: 'gpt-3.5-turbo', // 请根据需要替换为您想要使用的模型
+  //     // prompt: 'price = int(input()) number = input() if price < 100:print(price) elif 100<= price < 500: if number == (SAVE20"):print(price * 0.8) elif number == ("SAVE30"):print(price * 0.7)else:print(price) elif price>=500:if number == ("BIGSALE"):print(price * 0.6) else:print(price * 0.8)', // 您的提示文本
+  //     messages: [{'role': 'user', 'content': 'price = int(input()) number = input() if price < 100:print(price) elif 100<= price < 500: if number == (SAVE20"):print(price * 0.8) elif number == ("SAVE30"):print(price * 0.7)else:print(price) elif price>=500:if number == ("BIGSALE"):print(price * 0.6) else:print(price * 0.8)'}],
+  //     max_tokens: 300
+  //   }
 
-    try {
-      const response = await fetchOpenAICompletion(apiKey, promptData)
-      console.log('OpenAI response:', response.data)
-      // return response.data
-      return response.data.choices[0].message.content
-    } catch (error) {
-      console.error('OpenAI request failed:', error)
-      throw error // 使用 throw 而不是 return 来确保错误可以被外部的 catch 捕获
-    }
-    // fetchOpenAICompletion(apiKey, promptData)
-    //   .then(response => {
-    //     console.log('OpenAI response:', response.data)
-    //     return response.data
-    //   })
-    //   .catch(error => {
-    //     console.error('OpenAI request failed:', error)
-    //     return error
-    //   })
-  },
+  //   try {
+  //     const response = await fetchOpenAICompletion(apiKey, promptData)
+  //     console.log('OpenAI response:', response.data)
+  //     // return response.data
+  //     return response.data.choices[0].message.content
+  //   } catch (error) {
+  //     console.error('OpenAI request failed:', error)
+  //     throw error // 使用 throw 而不是 return 来确保错误可以被外部的 catch 捕获
+  //   }
+  // },
   getSubmissionList (offset, limit, params) {
     params.limit = limit
     params.offset = offset
@@ -373,21 +335,21 @@ function ajax (url, method, options) {
     })
   })
 }
-function fetchOpenAICompletion (apiKey, promptData) {
-  return new Promise((resolve, reject) => {
-    axios({
-      url: 'https://api.openai.com/v1/chat/completions',
-      method: 'post',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${apiKey}`
-      },
-      data: promptData
-    }).then(response => {
-      resolve(response)
-    }).catch(error => {
-      reject(error)
-      console.error('OpenAI API error:', error.response.data)
-    })
-  })
-}
+// function fetchOpenAICompletion (apiKey, promptData) {
+//   return new Promise((resolve, reject) => {
+//     axios({
+//       url: 'https://api.openai.com/v1/chat/completions',
+//       method: 'post',
+//       headers: {
+//         'Content-Type': 'application/json',
+//         'Authorization': `Bearer ${apiKey}`
+//       },
+//       data: promptData
+//     }).then(response => {
+//       resolve(response)
+//     }).catch(error => {
+//       reject(error)
+//       console.error('OpenAI API error:', error.response.data)
+//     })
+//   })
+// }
