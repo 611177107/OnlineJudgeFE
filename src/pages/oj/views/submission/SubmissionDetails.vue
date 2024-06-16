@@ -27,7 +27,7 @@
     </Col>
     <!-- 611177107: My Add -->
     <Col :span="20">
-      <Highlight :code="gpt_message" :border-color="status.color"></Highlight>
+      <Highlight :code="submission.gpt_message" :border-color="status.color"></Highlight>
     </Col>
     <Col v-if="submission.can_unshare" :span="20">
       <div id="share-btn">
@@ -109,7 +109,7 @@
     },
     mounted () {
       this.getSubmission()
-      this.testGPTAPI()
+      // this.testGPTAPI()
     },
     methods: {
       getSubmission () {
@@ -148,6 +148,8 @@
               this.columns = this.columns.concat(adminColumn)
             }
           }
+          console.log('=========get submission data=====')
+          console.log(data)
           this.submission = data
         }, () => {
           this.loading = false
@@ -160,7 +162,7 @@
           this.$success(this.$i18n.t('m.Succeeded'))
         }, () => {
         })
-      },
+      }
       // async testGPTAPI () {
       //   console.log('==================tesGPTAPI')
       //   let data = {id: this.submission.id}
@@ -171,19 +173,19 @@
       //     console.error('Failed to get message from OpenAI:', error)
       //   }
       // }
-      testGPTAPI () {
-        console.log('==================tesGPTAPI')
-        let data = {id: this.submission.id}
-        this.loading = true
-        api.testGPT(data).then(res => {
-          this.loading = false
-          this.gpt_message = res.data.data
-          console.log('===============gpt_message')
-          console.log(this.gpt_message)
-        }, () => {
-          this.loading = false
-        })
-      }
+      // testGPTAPI () {
+      //   console.log('==================tesGPTAPI')
+      //   let data = {id: this.submission.id}
+      //   this.loading = true
+      //   api.testGPT(data).then(res => {
+      //     this.loading = false
+      //     this.gpt_message = res.data.data
+      //     console.log('===============gpt_message')
+      //     console.log(this.gpt_message)
+      //   }, () => {
+      //     this.loading = false
+      //   })
+      // }
     },
     computed: {
       status () {

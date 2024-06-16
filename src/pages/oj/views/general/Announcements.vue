@@ -66,7 +66,7 @@
     },
     mounted () {
       this.init()
-      this.testGPTAPI()
+      // this.testGPTAPI()
     },
     methods: {
       init () {
@@ -102,16 +102,16 @@
       goBack () {
         this.listVisible = true
         this.announcement = ''
-      },
-      async testGPTAPI () {
-        console.log('==================tesGPTAPI')
-        try {
-          this.gpt_message = await api.testGPT()
-          console.log(this.gpt_message)
-        } catch (error) {
-          console.error('Failed to get message from OpenAI:', error)
-        }
       }
+      // async testGPTAPI () {
+      //   console.log('==================tesGPTAPI')
+      //   try {
+      //     this.gpt_message = await api.testGPT()
+      //     console.log(this.gpt_message)
+      //   } catch (error) {
+      //     console.error('Failed to get message from OpenAI:', error)
+      //   }
+      // }
     },
     computed: {
       title () {
